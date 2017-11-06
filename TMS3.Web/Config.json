@@ -1,0 +1,12 @@
+﻿{
+  "ConnectionStrings": {
+    "TMSConnectionString": "server=(localdb)\\ProjectsV13;Database=newTMS;Integrated Security=true;MultipleActiveResultSets=true;Trusted_Connection=True;"
+  },
+  "Logging": {
+    "LogLevel": {
+      "TMS3": "Information",
+      "Microsoft": "Warning"
+    }
+  }
+
+}
