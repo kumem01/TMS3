@@ -1,0 +1,68 @@
+﻿<section>
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <div class="row">
+                <label class="control-label col-md-2">
+                    Search
+                </label>
+                <div class="control-label pull-right">
+                    <input type="button" class="btn btn-primary btn-xs" value="Add Task" (click)="CreateNewTask()" />
+                </div>
+            </div>
+        </div>
+        <div class="panel-body">
+            <form class="form-horizontal" name="taskform" novalidate>
+            <div class="form-group">
+                <label for="TaskNumber" class="control-label col-md-3">Task Number:</label>
+
+                <div class="col-md-9">
+                    <input id="taskNumber" name="taskNumber" type="text" class="form-control" [(ngModel)]="searchParams.taskNumber" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="TaskName" class="control-label col-md-3">Task Name:</label>
+
+                <div class="col-md-9">
+                    <input id="taskName" type="text" name="taskName" class="form-control" [(ngModel)]="searchParams.taskName" />
+                </div>
+            </div>
+
+            </form>
+        </div>
+        <div class="row">
+            <div class="pull-right">
+                <div class="col-xs-6">
+                    <input type="button" class="btn btn-primary btn-sm" (click)="searchTasks()" value="submit" />
+                </div>
+            </div>
+        </div>
+  
+        <table class="table table-condensed table-striped">
+            <thead>
+                <tr>
+                    <th>
+                        Task Number
+                    </th>
+                    <th>
+                        Task Name
+                    </th>
+                    <th>Description</th>
+                    <th>Status</th>
+                    <th>Element Code</th>
+                </tr>
+                
+            </thead>
+            <tbody>
+                <tr *ngFor="let task of tasks">
+                    <td><a href="#" (click)="selectedTask(task)">{{task.taskNumber}}</a></td>
+                    <td><a href="#" (click)="selectedTask(task)">{{task.taskName}}</a></td>
+                    <td>{{task.descText}}</td>
+                    <td>{{task.taskStatusRefrenceTypeID}}</td>
+                    <td>{{task.elementCodeID}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+</section>

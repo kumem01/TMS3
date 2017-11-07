@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using TMS3.Library.Interfaces;
 using Microsoft.Extensions.Logging;
 using TMS3.Library.Entities;
+using TMS3.Web.ViewModels;
 
 namespace TMS3.Web.Controllers
 {
@@ -70,5 +71,22 @@ namespace TMS3.Web.Controllers
             return BadRequest("Failed to Create task");
         }
 
+
+        [HttpPost("search")]
+        public IActionResult GetTaskList([FromBody] TaskSearchParameters search)
+        {
+            try
+            {
+                var response = _taskRepository.Find(r => (string.IsNullOrEmpty(search.TaskName) || r.TaskName == search.TaskName) && (search.TaskNumber == null || r.TaskNumber == (int)search.TaskNumber));
+                if (response.NoErrors)
+                    return Ok(response.Entities.ToList());
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Failed to create new task : {ex}");
+            }
+
+            return BadRequest("Failed to get data");
+        }
     }
 }

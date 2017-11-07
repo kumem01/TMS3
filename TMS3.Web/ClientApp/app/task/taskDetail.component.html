@@ -1,0 +1,9 @@
+﻿<h3> task Details </h3>
+
+<div *ngIf="taskService.selectedTask.taskNumber>0">
+    <div> selected task : </div>
+    <div>
+        Task Number: {{taskService.selectedTask.taskNumber}}<br />
+        TaskName: {{taskService.selectedTask.taskName}}
+    </div>
+</div>
